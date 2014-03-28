@@ -43,6 +43,7 @@ ADD supervisord.conf /opt/supervisord.conf
 ADD nginx.conf /etc/nginx/nginx.conf
 ADD tty.json /opt/tty.json
 ADD ipython_notebook_config.py /opt/ipython/profile_default/ipython_notebook_config.py
+ADD index.html /var/www/html/index.html
 
 EXPOSE 22 80
 # Run all processes through supervisord
