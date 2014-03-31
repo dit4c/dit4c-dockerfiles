@@ -10,6 +10,8 @@ RUN yum install -y supervisor
 RUN yum install -y openssh-server
 # Install nginx
 RUN yum install -y nginx
+# Install Git
+RUN yum install -y git vim-enhanced
 # Install node.js
 RUN yum install -y nodejs npm
 # Install tty.js
@@ -17,6 +19,9 @@ RUN npm install -g tty.js
 # Install iPython notebook
 RUN yum install -y python-pip python-zmq python-jinja2 python-tornado python-pandas scipy
 RUN pip-python install ipython
+# Install iPython blocks
+RUN pip-python install --upgrade setuptools
+RUN pip-python install ipythonblocks
 
 # Log directory for supervisord
 RUN mkdir -p /var/log/supervisor
