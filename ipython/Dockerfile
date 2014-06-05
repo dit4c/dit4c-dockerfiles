@@ -35,7 +35,7 @@ RUN /usr/sbin/useradd developer
 
 # Set default passwords
 RUN echo 'root:developer' | chpasswd
-RUN echo 'developer:developer' | chpasswd
+RUN passwd -d developer && passwd -u -f developer
 
 # Create iPython profile
 RUN mkdir -p /opt/ipython
