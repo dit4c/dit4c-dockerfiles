@@ -41,9 +41,12 @@ var app = Sammy('#main', function() {
     showNavLocation($('#ipynb'), '#/ipynb');
   });
    
-  // define a 'route'
   this.get('#/tty', function() {
     showNavLocation($('#tty'), '#/tty');
+  });
+      
+  this.get('#/files', function() {
+   showNavLocation($('#files'), '#/files');
   });
 });
 
@@ -72,6 +75,7 @@ $(document).ready(function() {
       <ul class="nav navbar-nav">
         <li><a href="#/ipynb">iPython Notebooks</a></li>
         <li><a href="#/tty">Shell Terminals</a></li>
+        <li><a href="#/files">File Management</a></li>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
@@ -80,6 +84,7 @@ $(document).ready(function() {
 <div id="main">
   <iframe id="ipynb" src="/ipynb/"></iframe>
   <iframe id="tty"   src="/tty/"></iframe>
+  <iframe id="files"   src="/files/"></iframe>
 </div>
 </body>
 </html>
