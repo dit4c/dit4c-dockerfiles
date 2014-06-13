@@ -6,15 +6,12 @@ MAINTAINER t.dettrick@uq.edu.au
 ADD install.sh /tmp/install.sh
 RUN bash /tmp/install.sh
 
-# Add last (so caching works better)
-ADD supervisord.conf /opt/supervisord.conf
-ADD nginx.conf /etc/nginx/nginx.conf
-ADD tty.json /opt/tty.json
-ADD webdavconfig.py /opt/easydav/webdavconfig.py
-ADD ipython_notebook_config.py /opt/ipython/profile_default/ipython_notebook_config.py
-ADD index.html /var/www/html/index.html
-ADD dirindex.kid /opt/easydav/dirindex.kid
-ADD sudoers /etc/sudoers
+# Add supporting files (directory at a time to improve build speed)
+COPY etc /etc
+COPY opt /opt
+COPY var /var
+# Chowned to root, so reverse that change
+RUN chown -R developer /opt/ipython /var/log/easydav /var/log/supervisor
 
 EXPOSE 23 80
 # Run all processes through supervisord

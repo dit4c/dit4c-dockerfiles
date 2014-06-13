@@ -36,11 +36,12 @@ pip-python install ipythonblocks
 # Install EasyDAV
 cd /opt && \
   curl http://koti.kapsi.fi/jpa/webdav/easydav-0.4.tar.gz | tar zxvf - && \
-  ln -s easydav-0.4 easydav && \
+  mv easydav-0.4 easydav && \
   cd -
 
-# Log directory for supervisord
-mkdir -p /var/log/supervisor
+# Log directory for easydav & supervisord
+mkdir -p /var/log/{easydav,supervisor}
+chown -R developer /var/log/easydav
 
 # Create developer user for notebook
 /usr/sbin/useradd developer

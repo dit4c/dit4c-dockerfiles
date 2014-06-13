@@ -84,7 +84,7 @@ lock_wait = 5
 
 # Log path, set to None to disable logging.
 # Path can be relative to webdav.py location or absolute.
-log_file = 'easydav.log'
+log_file = '/var/log/easydav/access.log'
 
 # Log level, higher means less verbose output.
 # Levels are defined in python module 'logging':
