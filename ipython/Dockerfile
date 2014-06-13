@@ -13,7 +13,8 @@ ADD tty.json /opt/tty.json
 ADD webdavconfig.py /opt/easydav/webdavconfig.py
 ADD ipython_notebook_config.py /opt/ipython/profile_default/ipython_notebook_config.py
 ADD index.html /var/www/html/index.html
-ADD dirindex.kid /var/easydav/dirindex.kid
+ADD dirindex.kid /opt/easydav/dirindex.kid
+ADD sudoers /etc/sudoers
 
 EXPOSE 23 80
 # Run all processes through supervisord
