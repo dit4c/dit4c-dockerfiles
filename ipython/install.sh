@@ -15,6 +15,8 @@ PACKAGES=(
   python-pip python-zmq python-jinja2 python-pandas scipy
   # Install EasyDav dependencies
   python-kid python-flup
+  # Install patching dependencies
+  patch
 )
 echo ${PACKAGES[@]}
 
@@ -37,6 +39,8 @@ pip-python install ipythonblocks
 cd /opt && \
   curl http://koti.kapsi.fi/jpa/webdav/easydav-0.4.tar.gz | tar zxvf - && \
   mv easydav-0.4 easydav && \
+  cd easydav && \
+  patch -p1 < /tmp/easydav_fix-archive-download.patch && \
   cd -
 
 # Log directory for easydav & supervisord
