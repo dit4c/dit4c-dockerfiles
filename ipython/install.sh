@@ -7,8 +7,8 @@ PACKAGES=(
   busybox
   # Install nginx
   nginx
-  # Install Git
-  git vim-enhanced
+  # Install Git and development tools
+  git vim-enhanced wget tmux screen
   # Install node.js
   nodejs npm
   # Install iPython Notebook dependencies
@@ -56,5 +56,8 @@ passwd -d developer && passwd -u -f developer
 
 # Create iPython profile
 mkdir -p /opt/ipython
-IPYTHONDIR=/opt/ipython ipython profile create default
+export IPYTHONDIR=/opt/ipython
+ipython profile create default
+# Install MathJAX, because CDN is HTTP-only
+python -c "from IPython.external.mathjax import install_mathjax; install_mathjax()"
 chown -R developer /opt/ipython
