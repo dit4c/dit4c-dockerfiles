@@ -8,12 +8,19 @@ VOLUME ["/home/dit4c"]
 RUN yum install -y yum-plugin-fastestmirror
 # Update all packages
 RUN yum update -y
-# Install tmux, nginx, git, vim-enhanced couchdb & java
-RUN yum install -y tmux nginx git vim-enhanced couchdb java-1.8.0-openjdk-headless
+# Install enough for DIT4C services to be run
+RUN yum install -y tmux nginx git vim-enhanced couchdb java-1.8.0-openjdk-headless supervisor
 # Install zedrem
 RUN cd /usr/local/bin && curl http://get.zedapp.org/ | bash
 
 # Create developer user for notebook
 RUN /usr/sbin/useradd dit4c
+# Create log directory for supervisord
+RUN mkdir -p /var/log/supervisor && chown dit4c /var/log/supervisor
 
-EXPOSE 80 40000
+# Add Nginx config
+ADD nginx.conf /etc/nginx/nginx.conf
+ADD docker.conf /etc/nginx/conf.d/docker.conf
+ADD supervisord.conf /etc/supervisord.conf
+
+EXPOSE 80 443 40000
