@@ -1,5 +1,8 @@
 ## Installation and management of software
-Cmnd_Alias SOFTWARE = /bin/rpm, /usr/bin/up2date, /usr/bin/yum, /usr/bin/dnf
+Cmnd_Alias SOFTWARE = \
+  /bin/rpm, /usr/bin/yum, /usr/bin/dnf, \ # OS package management
+  /usr/bin/pip, /usr/bin/python-pip, \ # Python package management
+  /usr/bin/npm # Node.js package management
 
 # Defaults specification
 

@@ -8,7 +8,7 @@ PACKAGES=(
   # Install nginx
   nginx
   # Install Git and development tools
-  git vim-enhanced wget tmux screen
+  git vim-enhanced nano wget tmux screen
   # Install node.js
   nodejs npm
   # Install iPython Notebook dependencies
@@ -61,3 +61,6 @@ ipython profile create default
 # Install MathJAX, because CDN is HTTP-only
 python -c "from IPython.external.mathjax import install_mathjax; install_mathjax()"
 chown -R developer /opt/ipython
+
+# Ensure nginx directories have proper ownership
+chown -R nginx /var/lib/nginx

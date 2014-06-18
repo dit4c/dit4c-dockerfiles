@@ -1,18 +1,19 @@
-# DOCKER-VERSION 0.8.1
+# DOCKER-VERSION 1.0
 FROM fedora:20
 MAINTAINER t.dettrick@uq.edu.au
 
 # Run install script inside the container
-ADD install.sh /tmp/install.sh
-ADD easydav_fix-archive-download.patch /tmp/
+COPY install.sh /tmp/install.sh
+COPY easydav_fix-archive-download.patch /tmp/
 RUN bash /tmp/install.sh
 
 # Add supporting files (directory at a time to improve build speed)
-ADD etc /etc
-ADD opt /opt
-ADD var /var
+COPY etc /etc
+COPY opt /opt
+COPY var /var
 # Chowned to root, so reverse that change
 RUN chown -R developer /opt/ipython /var/log/easydav /var/log/supervisor
+RUN chown -R nginx /var/lib/nginx
 
 EXPOSE 23 80
 # Run all processes through supervisord
