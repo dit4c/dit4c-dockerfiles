@@ -8,7 +8,7 @@ PACKAGES=(
   # Install nginx
   nginx
   # Install Git and development tools
-  git vim-enhanced nano wget tmux screen
+  git vim-enhanced nano wget tmux screen bash-completion
   # Install node.js
   nodejs npm
   # Install iPython Notebook dependencies
