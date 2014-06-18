@@ -13,7 +13,7 @@ c.NotebookApp.profile = u'default'
 c.NotebookApp.ip = '127.0.0.1'
 
 # The base URL for the notebook server
-c.NotebookApp.base_project_url = '/ipynb/'
+c.NotebookApp.base_url = '/ipynb/'
 
 # The base URL for the kernel server
 c.NotebookApp.base_kernel_url = '/ipynb/'

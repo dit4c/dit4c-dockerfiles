@@ -28,8 +28,10 @@ dnf upgrade -y
 dnf install -y ${PACKAGES[@]}
 # Clean-up downloaded packages to save space
 dnf clean all && yum clean all
-# Install tty.js
-npm install -g tty.js
+# Install tty.js with updated term.js
+git clone https://github.com/soumith/tty.js.git /opt/tty.js && \
+  cd /opt/tty.js && \
+  npm install
 # Install iPython notebook
 pip-python install ipython tornado
 # Install iPython blocks
@@ -43,12 +45,12 @@ cd /opt && \
   patch -p1 < /tmp/easydav_fix-archive-download.patch && \
   cd -
 
+# Create developer user for notebook
+/usr/sbin/useradd developer
+
 # Log directory for easydav & supervisord
 mkdir -p /var/log/{easydav,supervisor}
 chown -R developer /var/log/easydav
-
-# Create developer user for notebook
-/usr/sbin/useradd developer
 
 # Set default passwords
 echo 'root:developer' | chpasswd
