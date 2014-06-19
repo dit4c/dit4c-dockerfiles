@@ -3,6 +3,7 @@
 import os.path
 import webdav
 import davutils
+from urlparse import urlparse
 import urllib
 def url_to_unicode(url):
     return unicode(urllib.unquote(url), 'utf-8')
@@ -11,6 +12,9 @@ def file_sorted(real_path, files):
         file_path = os.path.join(real_path,filename)
         return "%s-%s" % (not os.path.isdir(file_path), filename)
     return sorted(files, key=sort_by)
+def path_only(url):
+    return urlparse(url).path
+
 ?>
 <html xmlns:py="http://purl.org/kid/ns#" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -60,7 +64,7 @@ def file_sorted(real_path, files):
         <td>
           <i class="fa fa-folder"></i>
           &ensp;
-          <a href="${reqinfo.get_url(os.path.join(real_path, '..'))}">..</a>
+          <a href="${path_only(reqinfo.get_url(os.path.join(real_path, '..')))}">..</a>
         </td>
         <td>&nbsp;</td>
         <td class="size"></td>
@@ -72,7 +76,7 @@ def file_sorted(real_path, files):
           <i py:if="not os.path.isdir(file_path)" class="fa fa-file-o"></i>
           <i py:if="os.path.isdir(file_path)" class="fa fa-folder"></i>
           &ensp;
-          <a href="${reqinfo.get_url(file_path)}">${filename}</a>
+          <a href="${path_only(reqinfo.get_url(file_path))}">${filename}</a>
         </td>
         <td>${davutils.get_usertime(os.path.getmtime(file_path))}</td>
         <td class="size" py:if="not os.path.isdir(file_path)">
