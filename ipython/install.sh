@@ -44,6 +44,10 @@ cd /opt && \
   cd easydav && \
   patch -p1 < /tmp/easydav_fix-archive-download.patch && \
   cd -
+# Install zedrem
+cd /usr/local/bin && \
+  curl http://get.zedapp.org | bash && \
+  cd -
 
 # Create developer user for notebook
 /usr/sbin/useradd developer
