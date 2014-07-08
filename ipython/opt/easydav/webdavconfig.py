@@ -2,7 +2,7 @@
 
 # Root directory for files that are served through WebDAV.
 # Users are denied access outside this directory.
-root_dir = '/home/developer'
+root_dir = '/home/researcher'
 
 # Root url of the WebDAV repository.
 # Can usually be None, so that the program automatically decides the path

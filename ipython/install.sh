@@ -49,16 +49,16 @@ cd /usr/local/bin && \
   curl http://get.zedapp.org | bash && \
   cd -
 
-# Create developer user for notebook
-/usr/sbin/useradd developer
+# Create researcher user for notebook
+/usr/sbin/useradd researcher
 
 # Log directory for easydav & supervisord
 mkdir -p /var/log/{easydav,supervisor}
-chown -R developer /var/log/easydav
+chown -R researcher /var/log/easydav
 
 # Set default passwords
 echo 'root:developer' | chpasswd
-passwd -d developer && passwd -u -f developer
+passwd -d researcher && passwd -u -f researcher
 
 # Create iPython profile
 mkdir -p /opt/ipython
@@ -66,7 +66,7 @@ export IPYTHONDIR=/opt/ipython
 ipython profile create default
 # Install MathJAX, because CDN is HTTP-only
 python -c "from IPython.external.mathjax import install_mathjax; install_mathjax()"
-chown -R developer /opt/ipython
+chown -R researcher /opt/ipython
 
 # Ensure nginx directories have proper ownership
 chown -R nginx /var/lib/nginx
