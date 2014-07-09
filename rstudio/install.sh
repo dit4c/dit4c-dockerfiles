@@ -36,9 +36,14 @@ git clone https://github.com/soumith/tty.js.git /opt/tty.js && \
 # Install RStudio
 cd /tmp && \
   curl -o rstudio-server.rpm http://download2.rstudio.org/rstudio-server-0.98.953-${BASE_ARCH}.rpm && \
-  dnf localinstall -y rstudio-server.rpm && \
+  dnf install -y compat-libffi psmisc && \
+  ln -s /usr/lib64/libssl.so.10 /usr/lib64/libssl.so.6 && \
+  ln -s /usr/lib64/libcrypto.so.10 /usr/lib64/libcrypto.so.6 && \
+  ln -s /usr/lib64/libgmp.so.10 /usr/lib64/libgmp.so.3 && \
+  rpm -ivh --nodeps rstudio-server.rpm && \
   rm rstudio-server.rpm && \
-  cd -
+  cd - || \
+  exit 1
 # Install EasyDAV
 cd /opt && \
   curl http://koti.kapsi.fi/jpa/webdav/easydav-0.4.tar.gz | tar zxvf - && \

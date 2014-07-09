@@ -52,7 +52,7 @@ var app = Sammy('#main', function() {
 
 $(document).ready(function() {
   $('iframe').hide();
-  app.run('#/ipynb');
+  app.run('#/rstudio');
 });
 </script>
 <body>
@@ -82,7 +82,7 @@ $(document).ready(function() {
 </nav>
 
 <div id="main">
-  <iframe id="ipynb" src="/rstudio/"></iframe>
+  <iframe id="rstudio" src="/rstudio/"></iframe>
   <iframe id="tty"   src="/tty/"></iframe>
   <iframe id="files"   src="/files/"></iframe>
 </div>
