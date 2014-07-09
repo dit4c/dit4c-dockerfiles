@@ -37,6 +37,8 @@ pip-python install ipython tornado
 # Install iPython blocks
 pip-python install --upgrade setuptools
 pip-python install ipythonblocks
+# Instal pyreadline for tab completion
+pip-python install pyreadline
 # Install EasyDAV
 cd /opt && \
   curl http://koti.kapsi.fi/jpa/webdav/easydav-0.4.tar.gz | tar zxvf - && \
