@@ -1,5 +1,5 @@
 # DOCKER-VERSION 1.0
-FROM dit4c/base
+FROM dit4c/project-base
 MAINTAINER t.dettrick@uq.edu.au
 
 # Run install script inside the container
