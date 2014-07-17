@@ -36,4 +36,6 @@ COPY opt /opt
 COPY var /var
 # Chowned to root, so reverse that change
 RUN chown -R researcher /opt/ipython /var/log/easydav /var/log/supervisor
-#RUN chown -R nginx /var/lib/nginx
+
+# Check nginx config is OK
+RUN nginx -t
